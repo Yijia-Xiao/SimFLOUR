@@ -1,0 +1,142 @@
+
+\begin{table}
+    \parbox{.45\linewidth}{
+    \centering
+        \caption{验证集表现}
+        \begin{tabular}{|l|l|l|}
+        \hline
+            Optim$\backslash$Loss & 可微Spearmanr & MSE \\ \hline
+            SGD & 0.288 & 0.079 \\ \hline
+            AdamW & 0.288 & 0.149 \\ \hline
+        \end{tabular}
+        \label{tab:mlp_train}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+    % \centering
+    %     \caption{测试集表现}
+    %     \begin{tabular}{|l|l|l|}
+    %     \hline
+    %         Optim$\backslash$Loss & 可微Spearmanr & MSE \\ \hline
+    %         SGD & 0.325 & 0.071 \\ \hline
+    %         AdamW & \textbf{0.326} & 0.224 \\ \hline
+    %     \end{tabular}
+    %     \label{tab:mlp_test}
+    }
+\end{table}
+
+\begin{table}[!ht]
+    \centering
+    \caption{荧光性分布比例}
+    \begin{tabular}{|l|l|l|}
+    \hline
+        数据划分$\backslash$荧光强度 & 1.2-1.8 & 3.2-3.8 \\ \hline
+        荧光训练 & 16.6\% & 72.8\% \\ \hline
+        荧光验证 & 16.7\% & 72.9\% \\ \hline
+        荧光测试 & 40.4\% & 50.9\% \\ \hline
+    \end{tabular}
+    \label{tab:ratio}
+\end{table}
+
+\begin{table}
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{多层感知机}
+        \begin{tabular}{lll}
+        \hline
+            损失函数     & SpearmanR \\ \hline
+            DSpr        & \textbf{0.326}   \\ \hline
+            MSE         & 0.224     \\ \hline
+        \end{tabular}
+        \label{tab:mlp}
+    }
+    \hfill
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{自编码器(ReLU)}
+        \begin{tabular}{lll}
+        \hline
+            损失函数     & SpearmanR \\ \hline
+            DSpr        & \textbf{0.254}  \\ \hline
+            MSE         & 0.240     \\ \hline
+        \end{tabular}
+        \label{tab:ae}
+    }
+    \hfill
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{SimFLUOR}
+        \begin{tabular}{lll}
+        \hline
+            损失函数     & SpearmanR \\ \hline
+            DSpr        & \textbf{0.442}   \\ \hline
+            MSE         & 0.289     \\ \hline
+        \end{tabular}
+        \label{tab:sim}
+    }
+\end{table}
+
+
+
+\begin{table}[htbp]
+    \centering
+    % \begin{tabular}{|cc|ccc|}
+    \begin{tabular}{|cc|ccc|}
+    \hline
+    \multicolumn{2}{|c|}{模型\textbackslash{}任务} & \multicolumn{3}{c|}{接触预测}                                               \\ \hline
+    \multicolumn{1}{|c|}{\multirow{5}{*}{MSA Transformer 提供的基线模型}} & 模型          & \multicolumn{1}{c|}{P@L} & \multicolumn{1}{c|}{P@L/2} & P@L/5         \\ \cline{2-5} 
+    \multicolumn{1}{|c|}{} & ProtTrans-T5      & \multicolumn{1}{c|}{25.3} & \multicolumn{1}{c|}{\textbackslash{}} & 42.6 \\ \cline{2-5} 
+    \multicolumn{1}{|c|}{} & ESM-1b            & \multicolumn{1}{c|}{30.7} & \multicolumn{1}{c|}{\textbackslash{}} & 52.3 \\ \cline{2-5} 
+    \multicolumn{1}{|c|}{} & Potts             & \multicolumn{1}{c|}{23.9} & \multicolumn{1}{c|}{\textbackslash{}} & 42.7 \\ \cline{2-5} 
+    \multicolumn{1}{|c|}{} & Facebook baseline & \multicolumn{1}{c|}{43}   & \multicolumn{1}{c|}{51.3}             & 59.6 \\ \hline
+    \multicolumn{1}{|c|}{PMC (本工作)}                       & PMC-1B & \multicolumn{1}{c|}{46}  & \multicolumn{1}{c|}{54.7}  & \textbf{63.1} \\ \hline
+    \end{tabular}
+    \caption{CAMEO数据集上的接触预测结果}
+    \label{tab:cameo}
+\end{table}
+
+
+
+\begin{table}
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{P@L/5}
+        \begin{tabular}{lll}
+        \hline
+            Potts           & 23.9\% \\ \hline
+            ProtTrans-T5    & 25.3\% \\ \hline
+            ESM-1b          & 30.7\% \\ \hline
+            MSA Transformer & 43.0\% \\ \hline
+            PMC（本工作）    & 46.0\% \\ \hline
+        \end{tabular}
+        \label{tab:l5}
+    }
+    \hfill
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{P@L/2}
+        \begin{tabular}{lll}
+        \hline
+            Potts           & / \\ \hline
+            ProtTrans-T5    & / \\ \hline
+            ESM-1b          & / \\ \hline
+            MSA Transformer & 51.3\% \\ \hline
+            PMC（本工作）    & 54.7\% \\ \hline
+        \end{tabular}
+        \label{tab:l2}
+    }
+    \hfill
+    \parbox{.32\linewidth}{
+    \centering
+        \caption{P@L}
+        \begin{tabular}{lll}
+        \hline
+            Potts           & 42.7\% \\ \hline
+            ProtTrans-T5    & 42.6\% \\ \hline
+            ESM-1b          & 52.3\% \\ \hline
+            MSA Transformer & 59.6\% \\ \hline
+            PMC（本工作）    & 63.1\% \\ \hline
+        \end{tabular}
+        \label{tab:l}
+    }
+\end{table}
